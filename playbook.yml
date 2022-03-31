@@ -41,3 +41,13 @@
       copy:
         src: /home/ezz/Ansible_Task_1/index.php
         dest: /var/www/html/index.php
+        
+    - name: FirewallD rules
+      firewalld:
+        permanent: yes
+        immediate: yes
+        service: "{{ item }}"
+        state: enabled
+      with_items:
+       - http
+       - https
